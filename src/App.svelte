@@ -1,11 +1,27 @@
 <script>
 	export let name;
+	let count = 1;
+
+// the `$:` means 're-run whenever these values change'
+$: doubled = count * 2;
+$: quadrupled = doubled * 2;
+
+function handleClick() {
+	count += 1;
+}
 </script>
 
 <main>
 	<h1>Howdy {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<p>Testing out Svelte apps</p>
 </main>
+
+<button on:click={handleClick}>
+	Count: {count}
+</button>
+
+<p>{count} * 2 = {doubled}</p>
+<p>{doubled} * 2 = {quadrupled}</p>
 
 <style>
 	main {
